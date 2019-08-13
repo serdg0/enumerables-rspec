@@ -16,6 +16,7 @@ module Enumerable
       yield(self[i], i)
       i += 1
     end
+    self
   end
 
   def my_select
@@ -62,7 +63,7 @@ module Enumerable
     array
   end
 
-  def my_inject(memo = self[0])
+  def my_inject(memo = 0)
     object = memo
     my_each do |x|
       object = yield(memo, x)
@@ -71,3 +72,5 @@ module Enumerable
     object
   end
 end
+arr = [5, 4, 3, 2, 1]
+puts arr.my_inject { |x, sum| sum + x }

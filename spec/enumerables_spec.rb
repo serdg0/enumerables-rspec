@@ -3,6 +3,10 @@
 require './lib/enumerables'
 
 RSpec.describe Enumerable do
+  let(:array) { [1, 2, 3] }
+  let(:strings) { %w[a b c] }
+  let(:empty) { [] }
+
   describe '#my_all?' do
     it 'returns true if all elements in the array are pairs' do
       pairs = [2, 4, 6, 8, 10]
@@ -88,6 +92,48 @@ RSpec.describe Enumerable do
 
     it 'returns true for each element that is not an integer' do
       expect([true, 1, 'a'].my_map { |x| x.is_a? Integer }).to eql([false, true, false])
+    end
+  end
+
+  describe '#my_each' do
+    it 'returns the array itself' do
+      expect([1, 2, 3, 4, 5].my_each { |x| x }).to eql([1, 2, 3, 4, 5])
+    end
+
+    it 'return the array of strings itself' do
+      expect(%w[a b cd e].my_each { |x| x }).to eql(%w[a b cd e])
+    end
+
+    it 'return a mixed array of integers and strings itself' do
+      expect([1, 'a', 2, 'b'].my_each { |x| x }).to eql([1, 'a', 2, 'b'])
+    end
+  end
+
+  describe '#my_each_index' do
+    it 'returns the numbers in the array with the block passed with index' do
+      expect(array.my_each_index { |x, i| array[i] = x * 2 }).to eql([2, 4, 6])
+    end
+
+    it 'returns an array of strings' do
+      expect(strings.my_each_index { |x, _i| print x }).to eql(%w[a b c])
+    end
+
+    it 'return the numbers as a string' do
+      expect(array.my_each_index { |x, i| array[i] = x.to_s }).to eql(%w[1 2 3])
+    end
+  end
+
+  describe '#my_inject' do
+    it 'returns the sum of all the elements in an array' do
+      expect(array.my_inject { |x, memo| x + memo }).to eql(6)
+    end
+
+    it 'returns the total product of all elements in an array' do
+      expect(array.my_inject(1) { |x, prod| x * prod }).to eql(6)
+    end
+
+    it 'returns a string composed by all the string in an array' do
+      expect(strings.my_inject('') { |x, s| x + s }).to eql('abc')
     end
   end
 end

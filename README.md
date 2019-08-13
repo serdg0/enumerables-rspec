@@ -60,9 +60,9 @@ Enumerable Methods
 
 ## Authors
 
-* **Sergio Diaz** - * Software Developer * - [serdg0](https://github.com/serdg0)
+* **Sergio Diaz** - *Software Developer* - [serdg0](https://github.com/serdg0)
 
-* **AlejoCode** - * Tech Entrepreneur * - [AlejoCode](https://github.com/AlejoCode)
+* **AlejoCode** - *Tech Entrepreneur* - [AlejoCode](https://github.com/AlejoCode)
 
 
 ## Acknowledgments
