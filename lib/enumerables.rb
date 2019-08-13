@@ -72,5 +72,3 @@ module Enumerable
     object
   end
 end
-arr = [5, 4, 3, 2, 1]
-puts arr.my_inject { |x, sum| sum + x }
